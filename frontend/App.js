@@ -6,7 +6,7 @@ const icon = require('./assets/icon.png');
 export default function App() {
   return (
     <View style={styles.container}>
-      <View style={styles.imageContainer}>
+      <View style={styles.iconContainer}>
         <Image source={icon} style={styles.icon} />
       </View>
 
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     width: 100
   },
-  imageContainer: {
+  iconContainer: {
     flex: 1,
     paddingTop: 75,
   },

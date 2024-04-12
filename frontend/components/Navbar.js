@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
     navbar: {
       flexDirection: 'row',
       width: '100%',
-      flexGrow: 1,
       marginTop: '15%',
       justifyContent: 'space-between'
     },

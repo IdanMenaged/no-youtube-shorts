@@ -17,19 +17,11 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     backgroundColor: '#000000',
     alignItems: 'left',
     justifyContent: 'top',
+    height: '100%',
+    width: '100%'
   },
-  icon: {
-    resizeMode: 'contain',
-    width: 100
-  },
-  iconContainer: {
-    flex: 1,
-    paddingTop: 75,
-  },
-  searchContainer: {
-  }
 });

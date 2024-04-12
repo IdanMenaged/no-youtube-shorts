@@ -6,14 +6,9 @@ const search = require('../assets/search.png');
 
 export default function Navbar() {
     return (
-        <View>
-            <View style={styles.iconContainer}>
-                <Image source={icon} style={styles.icon} />
-            </View>
-
-            <View style={styles.searchContainer}>
-                <Image source={search} style={styles.searchButton} />
-            </View>
+        <View style={styles.navbar}>
+            <Image source={icon} style={styles.icon} />
+            <Image source={search} style={styles.searchButton} />
 
             <StatusBar style="auto" />
         </View>
@@ -21,21 +16,16 @@ export default function Navbar() {
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#000000',
-      alignItems: 'left',
-      justifyContent: 'top',
+    navbar: {
+      flexDirection: 'row',
+      width: '100%',
+      flexGrow: 1,
+      marginTop: '15%',
+      justifyContent: 'space-between'
     },
-    icon: {
-      resizeMode: 'contain',
-      width: 100
-    },
-    iconContainer: {
-      flex: 1,
-      paddingTop: 75,
-    },
-    searchContainer: {
+    searchButton: {
+      marginTop: '5%',
+      marginRight: '5%'
     }
   });
   

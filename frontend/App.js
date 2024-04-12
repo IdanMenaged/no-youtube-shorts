@@ -1,9 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
+import { useFonts } from 'expo-font';
 import { StyleSheet, View } from 'react-native';
 import Navbar from './components/Navbar';
 import Gallery from './components/Gallery';
 
 export default function App() {
+  // import font
+  const [fontsLoaded, fontError] = useFonts({
+    'Ubuntu': require('./assets/fonts/UbuntuCondensed-Regular.ttf')
+  });
+
+  if (!fontsLoaded && !fontError) {
+    return null;
+  }
+
   return (
     <View style={styles.container}>
       <Navbar />

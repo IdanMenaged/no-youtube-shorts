@@ -15,7 +15,8 @@ const styles = StyleSheet.create({
     text: {
         color: '#ffffff',
         alignSelf: 'center',
-        width: '100%'
+        width: '100%',
+        
     },
     image: {
         width: '100%',

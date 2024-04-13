@@ -4,11 +4,11 @@ import Folder from "./Folder";
 export default function Gallery() {
     return (
         <View style={styles.gallery}>
-            <Folder />
-            <Folder />
-            <Folder />
-            <Folder />
-            <Folder />
+            <Folder name={'placeholder 1'} />
+            <Folder name={'placeholder 2'} />
+            <Folder name={'placeholder 3'} />
+            <Folder name={'placeholder 4'} />
+            <Folder name={'placeholder 5'} />
         </View>
     )
 }

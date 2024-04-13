@@ -32,6 +32,9 @@
         {
           "fonts": ["./assets/fonts/UbuntuCondensed-Regular.ttf"]
         }
+      ],
+      [
+        "expo-image-picker"
       ]
     ]
   }

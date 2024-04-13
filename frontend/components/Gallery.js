@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet } from "react-native"
+import { View, StyleSheet } from "react-native"
 import Folder from "./Folder";
 
 export default function Gallery() {

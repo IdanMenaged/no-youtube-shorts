@@ -2,10 +2,10 @@ import { StyleSheet, View, Image, TouchableWithoutFeedback } from 'react-native'
 
 add = require('../assets/add.png');
 
-export default function Toolbar() {
+export default function Toolbar({ navigation }) {
     return (
         <View style={styles.toolbar}>
-            <TouchableWithoutFeedback onPress={() => alert('add')}>
+            <TouchableWithoutFeedback onPress={() => navigation.navigate('Add')}>
                 <Image source={add} style={styles.image} />
             </TouchableWithoutFeedback>
         </View>

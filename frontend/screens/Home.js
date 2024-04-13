@@ -4,11 +4,11 @@ import Navbar from '../components/Navbar';
 import Gallery from '../components/Gallery';
 import Toolbar from '../components/Toolbar';
 
-export default function Home() {
+export default function Home({ navigation }) {
   return (
       <View style={styles.container}>
         <Navbar />
-        <Toolbar />
+        <Toolbar navigation={navigation} />
         <Gallery />
 
         <StatusBar style="auto" />

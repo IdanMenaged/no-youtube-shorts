@@ -2,6 +2,7 @@ import { useFonts } from 'expo-font';
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import Home from './screens/Home';
+import Add from './screens/Add';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
@@ -13,15 +14,15 @@ export default function App() {
   });
 
   if (!fontsLoaded && !fontError) {
-    return null;
+  return null;
   }
 
   return (
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name='Home' component={Home} />
+        <Stack.Screen name='Add' component={Add} />
       </Stack.Navigator>
-      {/* <Home /> */}
     </NavigationContainer>
   );
 }

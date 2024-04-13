@@ -1,5 +1,5 @@
 import { useFonts } from 'expo-font';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import Home from './screens/Home';
 import Add from './screens/Add';
@@ -18,7 +18,7 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={theme}>
       <Stack.Navigator>
         <Stack.Screen name='Home' component={Home} />
         <Stack.Screen name='Add' component={Add} />
@@ -28,5 +28,11 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  
 });
+
+const theme = {
+  colors: {
+    card: '#000000',
+    text: '#ffffff'
+  }
+}

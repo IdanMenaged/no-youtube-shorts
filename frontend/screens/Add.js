@@ -1,11 +1,13 @@
 import { View, StyleSheet, TextInput, TouchableWithoutFeedback, Text, Image } from "react-native"
 import * as ImagePicker from 'expo-image-picker';
 import { useState } from 'react'
+import Storage from '../util/local-storage'
 
 photoInput = require('../assets/photo-input.png')
 
-export default function Add() {
+export default function Add({ navigation }) {
     const [photo, setPhoto] = useState(null)
+    const [name, setName] = useState(null)
 
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -20,15 +22,40 @@ export default function Add() {
         }
     }
 
+    function submit() {
+        data = {
+            name: name,
+            icon: photo,
+            channels: []
+        }
+
+        lastId = -1
+        Storage.getIdsForKey('folder').then(ids => {
+            if (lastId) {
+                lastId = ids[ids.length - 1]
+            }
+        })
+
+        Storage.save({
+            key: 'folder',
+            id: `${lastId + 1}`,
+            data: data,
+            expires: null
+        })
+
+        alert('created new folder')
+        navigation.navigate('Home')
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.form}>
                 <TouchableWithoutFeedback onPress={pickImage}>
                     <Image source={photo ? { uri: photo } : photoInput} style={styles.photoInput} />
                 </TouchableWithoutFeedback>
-                <TextInput placeholder='Name' style={[styles.text, styles.textInput]} />
+                <TextInput placeholder='Name' style={[styles.text, styles.textInput]} onChangeText={setName} />
             </View>
-            <TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={submit}>
                 <View style={styles.submitContainer}>
                     <Text style={[styles.text, styles.submit]}>Submit</Text>
                 </View>

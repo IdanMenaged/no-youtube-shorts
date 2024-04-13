@@ -1,11 +1,13 @@
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image, TouchableWithoutFeedback } from 'react-native';
 
 add = require('../assets/add.png');
 
 export default function Toolbar() {
     return (
         <View style={styles.toolbar}>
-            <Image source={add} style={styles.image}></Image>
+            <TouchableWithoutFeedback onPress={() => alert('add')}>
+                <Image source={add} style={styles.image} />
+            </TouchableWithoutFeedback>
         </View>
     )
 }

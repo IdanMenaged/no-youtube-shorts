@@ -1,14 +1,30 @@
 import { View, StyleSheet, TextInput, TouchableWithoutFeedback, Text, Image } from "react-native"
-import { launchImageLibrary } from 'react-native-image-picker';
+import * as ImagePicker from 'expo-image-picker';
+import { useState } from 'react'
 
 photoInput = require('../assets/photo-input.png')
 
 export default function Add() {
+    const [photo, setPhoto] = useState(null)
+
+    const pickImage = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: true,
+            aspect: [1, 1],
+            quality: 1,
+        });
+
+        if (!result.canceled) {
+            setPhoto(result.assets[0].uri)
+        }
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.form}>
-                <TouchableWithoutFeedback>
-                    <Image source={photoInput} style={styles.photoInput} />
+                <TouchableWithoutFeedback onPress={pickImage}>
+                    <Image source={photo ? { uri: photo } : photoInput} style={styles.photoInput} />
                 </TouchableWithoutFeedback>
                 <TextInput placeholder='Name' style={[styles.text, styles.textInput]} />
             </View>
@@ -35,7 +51,6 @@ const styles = StyleSheet.create({
         height: '10%',
         textAlign: 'center',
         borderRadius: 25,
-        // marginTop: '10%',
         fontFamily: 'Ubuntu',
         fontSize: 24
     },

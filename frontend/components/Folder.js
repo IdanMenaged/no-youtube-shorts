@@ -16,7 +16,8 @@ const styles = StyleSheet.create({
         color: '#ffffff',
         alignSelf: 'center',
         width: '100%',
-        fontFamily: 'Ubuntu'
+        fontFamily: 'Ubuntu',
+        textAlign: 'center'
     },
     image: {
         width: '100%',

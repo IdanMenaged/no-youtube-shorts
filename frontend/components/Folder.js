@@ -1,6 +1,6 @@
 import { Text, View, StyleSheet, Image } from "react-native"
 
-placeholderImage = require('../assets/placeholder.jpg')
+placeholderImage = require('../assets/placeholder.png')
 
 export default function Folder({ name }) {
     return (

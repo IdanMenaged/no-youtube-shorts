@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
       justifyContent: 'space-between'
     },
     searchButton: {
-      marginTop: '5%',
+      marginTop: '6%',
       marginRight: '5%'
     }
   });

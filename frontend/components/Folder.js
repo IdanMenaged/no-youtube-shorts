@@ -2,11 +2,11 @@ import { Text, View, StyleSheet, Image } from "react-native"
 
 placeholderImage = require('../assets/placeholder.png')
 
-export default function Folder({ name }) {
+export default function Folder({ data }) {
     return (
         <View style={styles.folder}>
             <Image source={placeholderImage} style={styles.image} />
-            <Text style={styles.text} numberOfLines={1}>{name}</Text>
+            <Text style={styles.text} numberOfLines={1}>{data.name}</Text>
         </View>
     )
 }

@@ -1,15 +1,26 @@
 import { View, StyleSheet, Text, FlatList, Image } from "react-native"
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
+import { useFocusEffect } from '@react-navigation/native'
 import Folder from "./Folder";
 import { getFolders, addFolder } from "../util/local-storage";
 
-export default function Gallery() {
-    const [folders, setFolders] = useState()
+export default function Gallery({ navigation }) {
+    const [folders, setFolders] = useState([])
 
-    useEffect(() => {
+    function updateFolders() {
         getFolders().then((folders) => {
             setFolders(folders)
         })
+    }
+
+    useEffect(() => {
+        updateFolders()
+
+        // update when screen comes into focus
+        const focusListener = navigation.addListener('focus', () => {
+            updateFolders();
+        })
+        return focusListener
     }, [])
 
     return (

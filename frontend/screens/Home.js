@@ -9,7 +9,7 @@ export default function Home({ navigation }) {
       <View style={styles.container}>
         <Navbar />
         <Toolbar navigation={navigation} />
-        <Gallery />
+        <Gallery navigation={navigation} />
 
         <StatusBar style="auto" />
       </View>

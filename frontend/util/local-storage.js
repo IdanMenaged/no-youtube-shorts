@@ -5,7 +5,26 @@ const storage = new Storage({
     storageBackend: AsyncStorage, // react native storage
     defaultExpires: null, // never expires
 })
+lastId = 0;
 
 export async function getFolders() {
-    return await storage.getAllDataForKey('folder').then(folders => folders)
+    return await storage.getAllDataForKey('folder')
+    .catch(err => alert(err))
+}
+
+export async function addFolder(name, icon, channels) {
+    data = {
+        name: name,
+        icon: icon,
+        channels: channels
+    }
+
+    lastId++;
+
+    storage.save({
+        key: 'folder',
+        id: `${lastId}`,
+        data: data,
+        expires: null
+    })
 }

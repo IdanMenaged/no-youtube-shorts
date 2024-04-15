@@ -1,7 +1,7 @@
 import { View, StyleSheet, Text, FlatList, Image } from "react-native"
 import { useState, useEffect } from 'react'
 import Folder from "./Folder";
-import { getFolders } from "../util/local-storage";
+import { getFolders, addFolder } from "../util/local-storage";
 
 export default function Gallery() {
     const [folders, setFolders] = useState()
@@ -10,10 +10,10 @@ export default function Gallery() {
         getFolders().then((folders) => {
             setFolders(folders)
         })
-    })
+    }, [])
 
     return (
-        folders ? <Text style={styles.text}>{JSON.stringify(folders)}</Text> : <Text style={styles.text}>No folders created yet...</Text>
+        JSON.stringify(folders) != '[]' ? <Text style={styles.text}>{JSON.stringify(folders)}</Text> : <Text style={styles.text}>No folders created yet...</Text>
     )
 }
 

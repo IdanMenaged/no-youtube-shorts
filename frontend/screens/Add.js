@@ -1,7 +1,7 @@
 import { View, StyleSheet, TextInput, TouchableWithoutFeedback, Text, Image } from "react-native"
 import * as ImagePicker from 'expo-image-picker';
 import { useState } from 'react'
-import Storage from '../util/local-storage'
+import { addFolder } from '../util/local-storage'
 
 photoInput = require('../assets/photo-input.png')
 
@@ -23,25 +23,7 @@ export default function Add({ navigation }) {
     }
 
     function submit() {
-        data = {
-            name: name,
-            icon: photo,
-            channels: []
-        }
-
-        lastId = -1
-        Storage.getIdsForKey('folder').then(ids => {
-            if (lastId) {
-                lastId = ids[ids.length - 1]
-            }
-        })
-
-        Storage.save({
-            key: 'folder',
-            id: `${lastId + 1}`,
-            data: data,
-            expires: null
-        })
+        addFolder(name, photo, [])
 
         alert('created new folder')
         navigation.navigate('Home')

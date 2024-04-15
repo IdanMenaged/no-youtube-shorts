@@ -5,7 +5,6 @@ const storage = new Storage({
     storageBackend: AsyncStorage, // react native storage
     defaultExpires: null, // never expires
 })
-lastId = 0;
 
 export async function getFolders() {
     return await storage.getAllDataForKey('folder')
@@ -19,11 +18,14 @@ export async function addFolder(name, icon, channels) {
         channels: channels
     }
 
-    lastId++;
+    const lastId = storage.getIdsForKey('folder').then(ids => {
+        return parseInt(ids[ids.length - 1])
+    })
+    const id = lastId + 1;
 
     storage.save({
         key: 'folder',
-        id: `${lastId}`,
+        id: `${id}`,
         data: data,
         expires: null
     })

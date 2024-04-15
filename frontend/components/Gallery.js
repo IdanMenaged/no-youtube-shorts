@@ -24,7 +24,7 @@ export default function Gallery({ navigation }) {
     }, [])
 
     return (
-        JSON.stringify(folders) != '[]' ? <Text style={styles.text}>{JSON.stringify(folders)}</Text> : <Text style={styles.text}>No folders created yet...</Text>
+        JSON.stringify(folders) != '[]' ? <Folder data={folders[0]} /> : <Text style={styles.text}>No folders created yet...</Text>
     )
 }
 

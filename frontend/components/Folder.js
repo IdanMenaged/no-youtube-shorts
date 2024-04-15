@@ -5,7 +5,7 @@ placeholderImage = require('../assets/placeholder.png')
 export default function Folder({ data }) {
     return (
         <View style={styles.folder}>
-            <Image source={placeholderImage} style={styles.image} />
+            <Image source={{ uri: data.icon }} style={styles.image} />
             <Text style={styles.text} numberOfLines={1}>{data.name}</Text>
         </View>
     )

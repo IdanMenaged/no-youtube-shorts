@@ -1,8 +1,7 @@
-import { View, StyleSheet, Text, FlatList, Image } from "react-native"
-import { useState, useEffect, useCallback } from 'react'
-import { useFocusEffect } from '@react-navigation/native'
+import { View, StyleSheet, Text, FlatList } from "react-native"
+import { useState, useEffect } from 'react'
 import Folder from "./Folder";
-import { getFolders, addFolder } from "../util/local-storage";
+import { getFolders } from "../util/local-storage";
 
 export default function Gallery({ navigation }) {
     const [folders, setFolders] = useState([])
@@ -24,7 +23,13 @@ export default function Gallery({ navigation }) {
     }, [])
 
     return (
-        JSON.stringify(folders) != '[]' ? <Folder data={folders[0]} /> : <Text style={styles.text}>No folders created yet...</Text>
+        JSON.stringify(folders) != '[]' ? (
+            <View style={styles.gallery}>
+                {folders.map((folder) => <Folder data={folder} />)}
+            </View>
+        ) : (
+            <Text style={styles.text}>No folders created yet...</Text>
+        )
     )
 }
 

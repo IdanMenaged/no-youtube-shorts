@@ -1,4 +1,4 @@
-import { View, StyleSheet, Text, FlatList } from "react-native"
+import { View, StyleSheet, Text } from "react-native"
 import { useState, useEffect } from 'react'
 import Folder from "./Folder";
 import { getFolders } from "../util/local-storage";
@@ -25,7 +25,7 @@ export default function Gallery({ navigation }) {
     return (
         JSON.stringify(folders) != '[]' ? (
             <View style={styles.gallery}>
-                {folders.map((folder) => <Folder data={folder} />)}
+                {folders.map((folder) => <Folder key={folder.name} data={folder} />)}
             </View>
         ) : (
             <Text style={styles.text}>No folders created yet...</Text>
@@ -43,4 +43,3 @@ const styles = StyleSheet.create({
         color: '#ffffff'
     }
 });
-  

@@ -8,7 +8,7 @@ const storage = new Storage({
 
 export async function getFolders() {
     return await storage.getAllDataForKey('folder')
-    .catch(err => alert(err))
+        .catch(err => alert(err))
 }
 
 export async function addFolder(name, icon, channels) {
@@ -18,15 +18,22 @@ export async function addFolder(name, icon, channels) {
         channels: channels
     }
 
-    const lastId = storage.getIdsForKey('folder').then(ids => {
-        return parseInt(ids[ids.length - 1])
-    })
-    const id = lastId + 1;
+    storage.getIdsForKey('folder')
+        .then(ids => {
+            console.log('og', ids)
+            if (ids.length === 0) {
+                console.log('entered')
+                ids = ['0'] // if nothing was saved yet, pretend there is something saved at 0 so that new entry is saved on 1
+            }
 
-    storage.save({
-        key: 'folder',
-        id: `${id}`,
-        data: data,
-        expires: null
-    })
+            const id = parseInt(ids[ids.length - 1]) + 1
+            console.log(id, ids)
+
+            storage.save({
+                key: 'folder',
+                id: `${id}`,
+                data: data,
+                expires: null
+            })
+        })
 }

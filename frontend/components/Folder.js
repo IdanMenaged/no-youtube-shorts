@@ -1,4 +1,5 @@
-import { Text, View, StyleSheet, Image, TouchableWithoutFeedback } from "react-native"
+import { Text, View, StyleSheet, Image } from "react-native"
+import { Menu, MenuOption, MenuOptions, MenuTrigger } from "react-native-popup-menu";
 
 const placeholderImage = require('../assets/photo-input.png')
 const more = require('../assets/more.png')
@@ -9,9 +10,14 @@ export default function Folder({ data }) {
             <Image source={(data.icon !== null ? { uri: data.icon } : placeholderImage)} style={styles.image} />
             <View style={styles.textRow}>
                 <Text style={styles.text} numberOfLines={1}>{data.name}</Text>
-                <TouchableWithoutFeedback>
-                    <Image source={more} style={styles.more} />
-                </TouchableWithoutFeedback>
+                <Menu>
+                    <MenuTrigger>
+                        <Image source={more} />
+                    </MenuTrigger>
+                    <MenuOptions>
+                        <MenuOption text='Delete' style={styles.text} />
+                    </MenuOptions>
+                </Menu>
             </View>
         </View>
     )

@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Home from './screens/Home';
 import Add from './screens/Add';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { MenuProvider } from 'react-native-popup-menu';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,18 +15,20 @@ export default function App() {
   });
 
   if (!fontsLoaded && !fontError) {
-  return null;
+    return null;
   }
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{
-        headerShown: false,
-      }}>
-        <Stack.Screen name='Home' component={Home} />
-        <Stack.Screen name='Add' component={Add} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <MenuProvider>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{
+          headerShown: false,
+        }}>
+          <Stack.Screen name='Home' component={Home} />
+          <Stack.Screen name='Add' component={Add} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </MenuProvider>
   );
 }
 

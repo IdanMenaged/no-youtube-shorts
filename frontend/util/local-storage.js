@@ -20,14 +20,11 @@ export async function addFolder(name, icon, channels) {
 
     storage.getIdsForKey('folder')
         .then(ids => {
-            console.log('og', ids)
             if (ids.length === 0) {
-                console.log('entered')
                 ids = ['0'] // if nothing was saved yet, pretend there is something saved at 0 so that new entry is saved on 1
             }
 
             const id = parseInt(ids[ids.length - 1]) + 1
-            console.log(id, ids)
 
             storage.save({
                 key: 'folder',

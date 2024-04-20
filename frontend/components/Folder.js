@@ -1,11 +1,11 @@
 import { Text, View, StyleSheet, Image } from "react-native"
 
-placeholderImage = require('../assets/placeholder.png')
+const placeholderImage = require('../assets/photo-input.png')
 
 export default function Folder({ data }) {
     return (
         <View style={styles.folder}>
-            <Image source={{ uri: data.icon }} style={styles.image} />
+            <Image source={(data.icon !== null ? { uri: data.icon } : placeholderImage)} style={styles.image} />
             <Text style={styles.text} numberOfLines={1}>{data.name}</Text>
         </View>
     )
@@ -29,4 +29,3 @@ const styles = StyleSheet.create({
         padding: '5%'
     }
 });
-  

@@ -1,5 +1,6 @@
 import { Text, View, StyleSheet, Image } from "react-native"
 import { Menu, MenuOption, MenuOptions, MenuTrigger } from "react-native-popup-menu";
+import { deleteFolder } from "../util/local-storage";
 
 const placeholderImage = require('../assets/photo-input.png')
 const more = require('../assets/more.png')
@@ -15,7 +16,7 @@ export default function Folder({ data }) {
                         <Image source={more} />
                     </MenuTrigger>
                     <MenuOptions>
-                        <MenuOption text='Delete' style={styles.text} />
+                        <MenuOption text='Delete' style={styles.text} onSelect={() => deleteFolder(data.id)} />
                     </MenuOptions>
                 </Menu>
             </View>

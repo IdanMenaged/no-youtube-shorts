@@ -45,5 +45,8 @@ export async function addFolder(name, icon, channels) {
 }
 
 export async function deleteFolder(id) {
-
+    storage.remove({
+        key: 'folder',
+        id: id
+    })
 }

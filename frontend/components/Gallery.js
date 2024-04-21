@@ -8,7 +8,6 @@ export default function Gallery({ navigation }) {
 
     function updateFolders() {
         getFolders().then((folders) => {
-            console.log(folders)
             setFolders(folders)
         })
     }
@@ -26,7 +25,7 @@ export default function Gallery({ navigation }) {
     return (
         JSON.stringify(folders) != '[]' ? (
             <View style={styles.gallery}>
-                {folders.map((folder) => <Folder key={folder.id} data={folder} />)}
+                {folders.map((folder) => <Folder key={folder.id} data={folder} updateFolders={updateFolders} />)}
             </View>
         ) : (
             <Text style={styles.text}>No folders created yet...</Text>

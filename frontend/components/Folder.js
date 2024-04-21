@@ -5,7 +5,7 @@ import { deleteFolder } from "../util/local-storage";
 const placeholderImage = require('../assets/photo-input.png')
 const more = require('../assets/more.png')
 
-export default function Folder({ data }) {
+export default function Folder({ data, updateFolders }) {
     return (
         <View style={styles.folder}>
             <Image source={(data.icon !== null ? { uri: data.icon } : placeholderImage)} style={styles.image} />
@@ -16,7 +16,10 @@ export default function Folder({ data }) {
                         <Image source={more} />
                     </MenuTrigger>
                     <MenuOptions>
-                        <MenuOption text='Delete' style={styles.text} onSelect={() => deleteFolder(data.id)} />
+                        <MenuOption text='Delete' style={styles.text} onSelect={() => {
+                            deleteFolder(data.id)
+                            updateFolders()
+                        }} />
                     </MenuOptions>
                 </Menu>
             </View>

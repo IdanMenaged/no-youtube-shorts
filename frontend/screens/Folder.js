@@ -1,11 +1,21 @@
 import { StyleSheet, View, Text } from 'react-native';
+import { useState, useEffect } from 'react'
+import { getFolder } from '../util/local-storage';
 import Navbar from '../components/Navbar';
 
 export default function Folder({ navigation, route }) {
+    const [data, setData] = useState(null)
+
+    useEffect(() => {
+        getFolder(route.params.id).then(data => {
+            setData(data)
+        })
+    })
+
     return (
         <View style={styles.container}>
             <Navbar />
-            <Text style={styles.text}>{route.params.id}</Text>
+            <Text style={styles.text}>{JSON.stringify(data)}</Text>
         </View>
     );
 }

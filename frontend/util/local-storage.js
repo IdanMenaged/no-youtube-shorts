@@ -50,3 +50,11 @@ export async function deleteFolder(id) {
         id: id
     })
 }
+
+export async function getFolder(id) {
+    return await storage.load({
+        key: 'folder',
+        id: id
+    })
+        .then(data => data)
+}

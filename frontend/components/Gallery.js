@@ -25,7 +25,12 @@ export default function Gallery({ navigation }) {
     return (
         JSON.stringify(folders) != '[]' ? (
             <View style={styles.gallery}>
-                {folders.map((folder) => <Folder key={folder.id} data={folder} updateFolders={updateFolders} />)}
+                {folders.map((folder) => <Folder
+                    key={folder.id}
+                    data={folder}
+                    updateFolders={updateFolders}
+                    navigation={navigation}
+                />)}
             </View>
         ) : (
             <Text style={styles.text}>No folders created yet...</Text>

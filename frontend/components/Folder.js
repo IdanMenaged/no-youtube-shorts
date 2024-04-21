@@ -1,14 +1,16 @@
-import { Text, View, StyleSheet, Image } from "react-native"
+import { Text, View, StyleSheet, Image, TouchableWithoutFeedback } from "react-native"
 import { Menu, MenuOption, MenuOptions, MenuTrigger } from "react-native-popup-menu";
 import { deleteFolder } from "../util/local-storage";
 
 const placeholderImage = require('../assets/photo-input.png')
 const more = require('../assets/more.png')
 
-export default function Folder({ data, updateFolders }) {
+export default function Folder({ data, updateFolders, navigation }) {
     return (
         <View style={styles.folder}>
-            <Image source={(data.icon !== null ? { uri: data.icon } : placeholderImage)} style={styles.image} />
+            <TouchableWithoutFeedback onPress={() => navigation.navigate('Folder', { id: data.id })}>
+                <Image source={(data.icon !== null ? { uri: data.icon } : placeholderImage)} style={styles.image} />
+            </TouchableWithoutFeedback>
             <View style={styles.textRow}>
                 <Text style={styles.text} numberOfLines={1}>{data.name}</Text>
                 <Menu>

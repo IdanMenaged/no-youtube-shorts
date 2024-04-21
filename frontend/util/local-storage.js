@@ -9,6 +9,15 @@ const storage = new Storage({
 export async function getFolders() {
     return await storage.getAllDataForKey('folder')
         .catch(err => alert(err))
+        .then(data => {
+            storage.getIdsForKey('folder')
+                .then(ids => {
+                    for (let i = 0; i < data.length; i++) {
+                        data[i].id = ids[i]
+                    }
+                })
+            return data
+        })
 }
 
 export async function addFolder(name, icon, channels) {
@@ -33,4 +42,8 @@ export async function addFolder(name, icon, channels) {
                 expires: null
             })
         })
+}
+
+export async function deleteFolder(id) {
+
 }

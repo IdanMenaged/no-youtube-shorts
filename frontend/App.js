@@ -6,6 +6,7 @@ import Add from './screens/Add';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { MenuProvider } from 'react-native-popup-menu';
 import Folder from './screens/Folder';
+import EditChannels from './screens/EditChannels';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +29,7 @@ export default function App() {
           <Stack.Screen name='Home' component={Home} />
           <Stack.Screen name='Add' component={Add} />
           <Stack.Screen name='Folder' component={Folder} />
+          <Stack.Screen name='EditChannels' component={EditChannels} />
         </Stack.Navigator>
       </NavigationContainer>
     </MenuProvider>

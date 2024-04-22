@@ -1,6 +1,7 @@
 import { StyleSheet, View, Text, TouchableWithoutFeedback, Image } from 'react-native';
 import { useState, useEffect } from 'react'
 import { getFolder } from '../util/local-storage';
+import { search } from '../util/youtube';
 import Navbar from '../components/Navbar';
 
 const edit = require('../assets/edit.png')
@@ -24,7 +25,7 @@ export default function Folder({ navigation, route }) {
                     <Image source={edit} style={styles.editImage} />
                 </TouchableWithoutFeedback>
             </View>
-            <Text style={styles.text}>{JSON.stringify(data)}</Text>
+            <Text style={styles.text}>{JSON.stringify(search(data.channels[0]).then(results => results))}</Text>
         </View>
     );
 }

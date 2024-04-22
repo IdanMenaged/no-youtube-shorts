@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { getFolder } from '../util/local-storage';
 
 const trash = require('../assets/trash.png')
-const add = require('../assets/add.png')
 
 export default function EditChannels({ navigation, route }) {
     const [data, setData] = useState({
@@ -17,7 +16,7 @@ export default function EditChannels({ navigation, route }) {
     // })
 
     return (
-        <ScrollView contentContainerStyle={styles.scrollView}>
+        <ScrollView contentContainerStyle={styles.scrollView} bounces={false}>
             <View style={styles.container}>
                 <View style={styles.formContainer}>
                     {data.channels.map(channel => {
@@ -32,7 +31,6 @@ export default function EditChannels({ navigation, route }) {
                         <TextInput placeholder="channel or keyword" style={styles.input} />
                         <Image source={trash} style={styles.trashImage} />
                     </View>
-                    <Image source={add} style={styles.add} />
                 </View>
                 <TouchableWithoutFeedback>
                     <View style={styles.submitContainer}>
@@ -69,6 +67,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         marginTop: '15%',
+        marginLeft: '10%',
         gap: '10%',
     },
     add: {
@@ -85,6 +84,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginBottom: '20%',
+        marginTop: '10%'
     },
     text: {
         width: '600%',

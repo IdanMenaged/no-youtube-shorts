@@ -25,15 +25,23 @@ export default function EditChannels({ navigation, route }) {
         lastInputRef.current.clear()
     }
 
+    function removeEntry(index) {
+        let newData = { ...data }
+        newData.channels.splice(index, 1)
+        setData(newData)
+    }
+
     return (
         <ScrollView contentContainerStyle={styles.scrollView} bounces={false}>
             <View style={styles.container}>
                 <View style={styles.formContainer}>
-                    {data.channels.map(channel => {
+                    {data.channels.map((channel, i) => {
                         return (
-                            <View key={channel} style={styles.inputContainer}>
+                            <View key={i} style={styles.inputContainer}>
                                 <TextInput value={channel} style={styles.input} />
-                                <Image source={trash} style={styles.trashImage} />
+                                <TouchableWithoutFeedback onPress={() => removeEntry(i)}>
+                                    <Image source={trash} style={styles.trashImage} />
+                                </TouchableWithoutFeedback>
                             </View>
                         )
                     })}

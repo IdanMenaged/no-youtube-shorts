@@ -1704,6 +1704,13 @@
   dependencies:
     merge-options "^3.0.4"
 
+"@react-native-async-storage/async-storage@^1.13.4":
+  version "1.23.1"
+  resolved "https://registry.yarnpkg.com/@react-native-async-storage/async-storage/-/async-storage-1.23.1.tgz#cad3cd4fab7dacfe9838dce6ecb352f79150c883"
+  integrity sha512-Qd2kQ3yi6Y3+AcUlrHxSLlnBvpdCEMVGFlVBneVOjaFaPU61g1huc38g339ysXspwY1QZA2aNhrk/KlHGO+ewA==
+  dependencies:
+    merge-options "^3.0.4"
+
 "@react-native-community/cli-clean@12.3.6":
   version "12.3.6"
   resolved "https://registry.yarnpkg.com/@react-native-community/cli-clean/-/cli-clean-12.3.6.tgz#e8a7910bebc97266fd5068649013a03958021fc4"
@@ -5890,6 +5897,13 @@ react-is@^17.0.1:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
+
+react-native-cache@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/react-native-cache/-/react-native-cache-2.0.3.tgz#cb762c23947b5eb9d8b49e218e8d4a18b5d2a9b3"
+  integrity sha512-EV2fp1Xg1ISL+f/JYyafFpt9BsmNcbEZ/IICg8crelI/CsrqZh+5OAUWoBk2WccXpqrC315tL9GaOa9R53zD1A==
+  dependencies:
+    "@react-native-async-storage/async-storage" "^1.13.4"
 
 react-native-dotenv@^3.4.11:
   version "3.4.11"

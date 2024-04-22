@@ -1,5 +1,5 @@
 import { StyleSheet, TextInput, View, Image, TouchableWithoutFeedback, Text, ScrollView } from 'react-native';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { getFolder } from '../util/local-storage';
 
 const trash = require('../assets/trash.png')
@@ -9,11 +9,21 @@ export default function EditChannels({ navigation, route }) {
         channels: []
     })
 
+    const lastInputRef = useRef(null)
+
     useEffect(() => {
         getFolder(route.params.id).then(data => {
             setData(data)
         })
     })
+
+    function handleNewInput(event) {
+        const input = event.nativeEvent.text
+        newData = { ...data }
+        newData.channels.push(input)
+        setData(newData)
+        lastInputRef.current.clear()
+    }
 
     return (
         <ScrollView contentContainerStyle={styles.scrollView} bounces={false}>
@@ -21,13 +31,18 @@ export default function EditChannels({ navigation, route }) {
                 <View style={styles.formContainer}>
                     {data.channels.map(channel => {
                         return (
-                            <View style={styles.inputContainer}>
-                                <TextInput placeholder={channel} style={styles.input} />
+                            <View key={channel} style={styles.inputContainer}>
+                                <TextInput value={channel} style={styles.input} />
                                 <Image source={trash} style={styles.trashImage} />
                             </View>
                         )
                     })}
-                    <TextInput placeholder="channel or keyword" style={styles.lastInput} />
+                    <TextInput
+                        placeholder="channel or keyword"
+                        style={styles.lastInput}
+                        onSubmitEditing={handleNewInput}
+                        ref={lastInputRef}
+                    />
                 </View>
                 <TouchableWithoutFeedback>
                     <View style={styles.submitContainer}>

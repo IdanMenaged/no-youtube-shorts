@@ -1,6 +1,7 @@
 import { StyleSheet, View, Text, TouchableWithoutFeedback, Image } from 'react-native';
 import { useState, useEffect } from 'react'
 import { getFolder } from '../util/local-storage';
+import cache from '../util/cache';
 import { search } from '../util/youtube';
 import Navbar from '../components/Navbar';
 
@@ -15,6 +16,10 @@ export default function Folder({ navigation, route }) {
             setData(data)
             search('hello world').then(results => {
                 setSearchResults(results)
+                if (!results.error) {
+                    cache.set(route.params.id, results)
+                    cache.getAll().then((results) => console.log(results))
+                }
             })
         })
     }, [])

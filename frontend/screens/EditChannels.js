@@ -6,14 +6,14 @@ const trash = require('../assets/trash.png')
 
 export default function EditChannels({ navigation, route }) {
     const [data, setData] = useState({
-        channels: ['test channel', 't2', 't3', 't4']
+        channels: []
     })
 
-    // useEffect(() => {
-    //     getFolder(route.params.id).then(data => {
-    //         setData(data)
-    //     })
-    // })
+    useEffect(() => {
+        getFolder(route.params.id).then(data => {
+            setData(data)
+        })
+    })
 
     return (
         <ScrollView contentContainerStyle={styles.scrollView} bounces={false}>

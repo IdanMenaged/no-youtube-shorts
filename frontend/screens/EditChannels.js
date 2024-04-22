@@ -1,4 +1,4 @@
-import { StyleSheet, TextInput, View, Image } from 'react-native';
+import { StyleSheet, TextInput, View, Image, TouchableWithoutFeedback, Text } from 'react-native';
 import { useState, useEffect } from 'react';
 import { getFolder } from '../util/local-storage';
 
@@ -16,11 +16,18 @@ export default function EditChannels({ navigation, route }) {
 
     return (
         <View style={styles.container}>
-            <View style={styles.inputContainer}>
-                <TextInput placeholder="channel or keyword" style={styles.input} />
-                <Image source={trash} style={styles.trashImage} />
+            <View style={styles.formContainer}>
+                <View style={styles.inputContainer}>
+                    <TextInput placeholder="channel or keyword" style={styles.input} />
+                    <Image source={trash} style={styles.trashImage} />
+                </View>
+                <Image source={add} style={styles.add} />
             </View>
-            <Image source={add} style={styles.add} />
+            <TouchableWithoutFeedback>
+                <View style={styles.submitContainer}>
+                    <Text style={[styles.text, styles.submit]}>Submit</Text>
+                </View>
+            </TouchableWithoutFeedback>
         </View>
     );
 }
@@ -32,6 +39,7 @@ const styles = StyleSheet.create({
         justifyContent: ' center',
         height: '100%',
         width: '100%',
+        justifyContent: 'space-between'
     },
     input: {
         backgroundColor: '#D9D9D9',
@@ -39,7 +47,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 25,
         fontFamily: 'Ubuntu',
-        width: '50%'
+        width: '60%'
     },
     trashImage: {
         width: '10%',
@@ -53,5 +61,29 @@ const styles = StyleSheet.create({
     },
     add: {
         marginTop: '5%'
+    },
+    submit: {
+        height: '50%', // centers it vertically
+    },
+    submitContainer: {
+        backgroundColor: '#D9D9D9',
+        borderRadius: 25,
+        width: '60%',
+        height: '10%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginBottom: '20%',
+    },
+    text: {
+        width: '600%',
+        height: '10%',
+        textAlign: 'center',
+        borderRadius: 25,
+        fontFamily: 'Ubuntu',
+        fontSize: 24
+    },
+    formContainer: {
+        alignItems: 'center',
+        justifyContent: ' center',
     }
 });

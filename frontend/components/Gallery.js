@@ -27,7 +27,7 @@ export default function Gallery({ navigation }) {
             <View style={styles.gallery}>
                 {folders.map((folder) => <Folder
                     key={folder.id}
-                    data={folder}
+                    _data={folder}
                     updateFolders={updateFolders}
                     navigation={navigation}
                 />)}

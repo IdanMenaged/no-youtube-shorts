@@ -1,16 +1,40 @@
-import { View, StyleSheet, Image, TouchableWithoutFeedback, TextInput } from "react-native"
+import { View, StyleSheet, Image, TextInput, Pressable } from "react-native"
 import { Menu, MenuOption, MenuOptions, MenuTrigger } from "react-native-popup-menu";
+import * as ImagePicker from 'expo-image-picker';
 import { deleteFolder, updateFolder } from "../util/local-storage";
+import { useState } from "react";
 
 const placeholderImage = require('../assets/photo-input.png')
 const more = require('../assets/more.png')
 
-export default function Folder({ data, updateFolders, navigation }) {
+export default function Folder({ _data, updateFolders, navigation }) {
+    const [data, setData] = useState(_data)
+
+    const pickImage = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: true,
+            aspect: [1, 1],
+            quality: 1,
+        });
+
+        if (!result.canceled) {
+            const icon = result.assets[0].uri
+            const newData = { ...data }
+            newData.icon = icon
+            updateFolder(data.id, newData)
+            setData(newData)
+        }
+    }
+
     return (
         <View style={styles.folder}>
-            <TouchableWithoutFeedback onPress={() => navigation.navigate('Folder', { id: data.id })}>
+            <Pressable
+                onPress={() => navigation.navigate('Folder', { id: data.id })}
+                onLongPress={() => pickImage().then(() => console.log('new image'))}
+            >
                 <Image source={(data.icon !== null ? { uri: data.icon } : placeholderImage)} style={styles.image} />
-            </TouchableWithoutFeedback>
+            </Pressable>
             <View style={styles.textRow}>
                 <TextInput
                     style={styles.text}

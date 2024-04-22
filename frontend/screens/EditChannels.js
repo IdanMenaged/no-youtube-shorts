@@ -27,10 +27,7 @@ export default function EditChannels({ navigation, route }) {
                             </View>
                         )
                     })}
-                    <View style={styles.inputContainer}>
-                        <TextInput placeholder="channel or keyword" style={styles.input} />
-                        <Image source={trash} style={styles.trashImage} />
-                    </View>
+                    <TextInput placeholder="channel or keyword" style={styles.lastInput} />
                 </View>
                 <TouchableWithoutFeedback>
                     <View style={styles.submitContainer}>
@@ -97,8 +94,19 @@ const styles = StyleSheet.create({
     formContainer: {
         alignItems: 'center',
         justifyContent: 'center',
+        width: '100%'
     },
     scrollView: {
         flexGrow: 1
+    },
+    lastInput: {
+        backgroundColor: '#D9D9D9',
+        borderRadius: 10,
+        textAlign: 'center',
+        fontSize: 25,
+        fontFamily: 'Ubuntu',
+        width: '55%',
+        height: '25%',
+        marginTop: '10%'
     }
 });

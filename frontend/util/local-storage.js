@@ -58,3 +58,12 @@ export async function getFolder(id) {
     })
         .then(data => data)
 }
+
+export async function updateFolder(id, data) {
+    storage.save({
+        key: 'folder',
+        id: `${id}`,
+        data: data,
+        expires: null
+    })
+}

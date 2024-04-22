@@ -1,6 +1,6 @@
 import { StyleSheet, TextInput, View, Image, TouchableWithoutFeedback, Text, ScrollView } from 'react-native';
 import { useState, useEffect, useRef } from 'react';
-import { getFolder } from '../util/local-storage';
+import { getFolder, updateFolder } from '../util/local-storage';
 
 const trash = require('../assets/trash.png')
 
@@ -31,6 +31,12 @@ export default function EditChannels({ navigation, route }) {
         setData(newData)
     }
 
+    function submit() {
+        updateFolder(route.params.id, data).then(() => {
+            navigation.navigate('Folder', { id: route.params.id })
+        })
+    }
+
     return (
         <ScrollView contentContainerStyle={styles.scrollView} bounces={false}>
             <View style={styles.container}>
@@ -52,7 +58,7 @@ export default function EditChannels({ navigation, route }) {
                         ref={lastInputRef}
                     />
                 </View>
-                <TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={submit}>
                     <View style={styles.submitContainer}>
                         <Text style={[styles.text, styles.submit]}>Submit</Text>
                     </View>

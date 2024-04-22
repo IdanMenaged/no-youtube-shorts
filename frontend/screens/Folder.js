@@ -12,15 +12,21 @@ export default function Folder({ navigation, route }) {
     const [searchResults, setSearchResults] = useState(null)
 
     useEffect(() => {
-        getFolder(route.params.id).then(data => {
+        getFolder(route.params.id).then(async (data) => {
             setData(data)
-            search('hello world').then(results => {
-                setSearchResults(results)
-                if (!results.error) {
-                    cache.set(route.params.id, results)
-                    cache.getAll().then((results) => console.log(results))
-                }
-            })
+            const inCache = await cache.get(route.params.id)
+            if (inCache) {
+                console.log('in cache')
+                setSearchResults(inCache)
+            } else {
+                search('hello world').then(results => {
+                    setSearchResults(results)
+                    if (!results.error) {
+                        cache.set(route.params.id, results)
+                        cache.getAll().then((results) => console.log(results))
+                    }
+                })
+            }
         })
     }, [])
 

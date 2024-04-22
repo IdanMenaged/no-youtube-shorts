@@ -8,12 +8,16 @@ const edit = require('../assets/edit.png')
 
 export default function Folder({ navigation, route }) {
     const [data, setData] = useState(null)
+    const [searchResults, setSearchResults] = useState(null)
 
     useEffect(() => {
         getFolder(route.params.id).then(data => {
             setData(data)
+            search('hello world').then(results => {
+                setSearchResults(results)
+            })
         })
-    })
+    }, [])
 
     return (
         <View style={styles.container}>
@@ -25,7 +29,7 @@ export default function Folder({ navigation, route }) {
                     <Image source={edit} style={styles.editImage} />
                 </TouchableWithoutFeedback>
             </View>
-            <Text style={styles.text}>{JSON.stringify(search(data.channels[0]).then(results => results))}</Text>
+            <Text style={styles.text}>{JSON.stringify(searchResults)}</Text>
         </View>
     );
 }

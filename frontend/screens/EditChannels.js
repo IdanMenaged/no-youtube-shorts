@@ -1,4 +1,4 @@
-import { StyleSheet, TextInput, View, Image, TouchableWithoutFeedback, Text } from 'react-native';
+import { StyleSheet, TextInput, View, Image, TouchableWithoutFeedback, Text, ScrollView } from 'react-native';
 import { useState, useEffect } from 'react';
 import { getFolder } from '../util/local-storage';
 
@@ -6,29 +6,41 @@ const trash = require('../assets/trash.png')
 const add = require('../assets/add.png')
 
 export default function EditChannels({ navigation, route }) {
-    const [data, setData] = useState(null)
-
-    useEffect(() => {
-        getFolder(route.params.id).then(data => {
-            setData(data)
-        })
+    const [data, setData] = useState({
+        channels: ['test channel', 't2', 't3', 't4']
     })
 
+    // useEffect(() => {
+    //     getFolder(route.params.id).then(data => {
+    //         setData(data)
+    //     })
+    // })
+
     return (
-        <View style={styles.container}>
-            <View style={styles.formContainer}>
-                <View style={styles.inputContainer}>
-                    <TextInput placeholder="channel or keyword" style={styles.input} />
-                    <Image source={trash} style={styles.trashImage} />
+        <ScrollView contentContainerStyle={styles.scrollView}>
+            <View style={styles.container}>
+                <View style={styles.formContainer}>
+                    {data.channels.map(channel => {
+                        return (
+                            <View style={styles.inputContainer}>
+                                <TextInput placeholder={channel} style={styles.input} />
+                                <Image source={trash} style={styles.trashImage} />
+                            </View>
+                        )
+                    })}
+                    <View style={styles.inputContainer}>
+                        <TextInput placeholder="channel or keyword" style={styles.input} />
+                        <Image source={trash} style={styles.trashImage} />
+                    </View>
+                    <Image source={add} style={styles.add} />
                 </View>
-                <Image source={add} style={styles.add} />
+                <TouchableWithoutFeedback>
+                    <View style={styles.submitContainer}>
+                        <Text style={[styles.text, styles.submit]}>Submit</Text>
+                    </View>
+                </TouchableWithoutFeedback>
             </View>
-            <TouchableWithoutFeedback>
-                <View style={styles.submitContainer}>
-                    <Text style={[styles.text, styles.submit]}>Submit</Text>
-                </View>
-            </TouchableWithoutFeedback>
-        </View>
+        </ScrollView>
     );
 }
 
@@ -39,7 +51,7 @@ const styles = StyleSheet.create({
         justifyContent: ' center',
         height: '100%',
         width: '100%',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     },
     input: {
         backgroundColor: '#D9D9D9',
@@ -56,7 +68,7 @@ const styles = StyleSheet.create({
     inputContainer: {
         flexDirection: 'row',
         justifyContent: 'center',
-        marginTop: '25%',
+        marginTop: '15%',
         gap: '10%',
     },
     add: {
@@ -84,6 +96,9 @@ const styles = StyleSheet.create({
     },
     formContainer: {
         alignItems: 'center',
-        justifyContent: ' center',
+        justifyContent: 'center',
+    },
+    scrollView: {
+        flexGrow: 1
     }
 });

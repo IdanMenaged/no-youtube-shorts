@@ -4,7 +4,6 @@ export async function search(keyword) {
     const url = `https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_DATA_API_KEY}&type=video&part=snippet&q=${keyword}`
     const res = await fetch(url)
     const data = await res.json()
-    console.log(await data)
     return await data
 }
 

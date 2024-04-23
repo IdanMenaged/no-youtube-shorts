@@ -19,11 +19,13 @@ export default function Folder({ navigation, route }) {
                 console.log('in cache')
                 setSearchResults(inCache)
             } else {
-                search('hello world').then(results => {
-                    setSearchResults(results)
+                const results = []
+                data.channels.forEach(async channel => {
+                    const result = await search(channel)
+                    results.push(result)
+                    setSearchResults(results) // FIX: prob triggers multiple renders. for now its fast enough and isn't too much of a problem
                     if (!results.error) {
                         cache.set(route.params.id, results)
-                        cache.getAll().then((results) => console.log(results))
                     }
                 })
             }

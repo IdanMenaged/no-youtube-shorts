@@ -1,5 +1,6 @@
 import Storage from 'react-native-storage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import cache from './cache';
 
 const storage = new Storage({
     storageBackend: AsyncStorage, // react native storage
@@ -66,4 +67,6 @@ export async function updateFolder(id, data) {
         data: data,
         expires: null
     })
+
+    cache.remove(id)
 }

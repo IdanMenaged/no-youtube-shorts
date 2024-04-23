@@ -12,7 +12,7 @@ export default function Folder({ navigation, route }) {
     const [data, setData] = useState(null)
     const [searchResults, setSearchResults] = useState(null)
 
-    useEffect(() => {
+    const onLoad = () => {
         getFolder(route.params.id).then(async (data) => {
             setData(data)
             const inCache = await cache.get(route.params.id)
@@ -34,6 +34,12 @@ export default function Folder({ navigation, route }) {
                 })
             }
         })
+    }
+
+    useEffect(() => {
+        onLoad()
+
+        navigation.addListener('focus', () => onLoad())
     }, [])
 
     return (

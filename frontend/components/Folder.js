@@ -2,6 +2,7 @@ import { View, StyleSheet, Image, TextInput, Pressable } from "react-native"
 import { Menu, MenuOption, MenuOptions, MenuTrigger } from "react-native-popup-menu";
 import * as ImagePicker from 'expo-image-picker';
 import { deleteFolder, updateFolder } from "../util/local-storage";
+import cache from '../util/cache'
 import { useState } from "react";
 
 const placeholderImage = require('../assets/photo-input.png')
@@ -55,6 +56,7 @@ export default function Folder({ _data, updateFolders, navigation }) {
                     <MenuOptions>
                         <MenuOption text='Delete' style={styles.text} onSelect={() => {
                             deleteFolder(data.id)
+                            cache.remove(data.id)
                             updateFolders()
                         }} />
                     </MenuOptions>

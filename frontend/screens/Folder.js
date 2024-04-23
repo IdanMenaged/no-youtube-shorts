@@ -25,6 +25,7 @@ export default function Folder({ navigation, route }) {
                 data.channels.forEach(async channel => {
                     let result = await search(channel)
                     result = result.items
+                    result.forEach(vid => results.push(vid))
                     results.push(result)
                     setSearchResults(results) // FIX: prob triggers multiple renders. for now its fast enough and isn't too much of a problem
                     if (!results.error) {
@@ -45,7 +46,7 @@ export default function Folder({ navigation, route }) {
                     <Image source={edit} style={styles.editImage} />
                 </TouchableWithoutFeedback>
             </View>
-            {searchResults ? <VideoPreview searchResult={searchResults[0][0]} /> : <Text style={styles.text}>no videos</Text>}
+            {searchResults ? <VideoPreview searchResult={searchResults[0]} /> : <Text style={styles.text}>no videos</Text>}
         </View>
     );
 }

@@ -21,7 +21,8 @@ export default function Folder({ navigation, route }) {
             } else {
                 const results = []
                 data.channels.forEach(async channel => {
-                    const result = await search(channel)
+                    let result = await search(channel)
+                    result = result.items
                     results.push(result)
                     setSearchResults(results) // FIX: prob triggers multiple renders. for now its fast enough and isn't too much of a problem
                     if (!results.error) {

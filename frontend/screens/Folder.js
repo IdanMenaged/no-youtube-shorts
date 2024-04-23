@@ -1,9 +1,10 @@
-import { StyleSheet, View, Text, TouchableWithoutFeedback, Image } from 'react-native';
+import { StyleSheet, View, TouchableWithoutFeedback, Image } from 'react-native';
 import { useState, useEffect } from 'react'
 import { getFolder } from '../util/local-storage';
 import cache from '../util/cache';
 import { search } from '../util/youtube';
 import Navbar from '../components/Navbar';
+import VideoPreview from '../components/VideoPreview';
 
 const edit = require('../assets/edit.png')
 
@@ -43,7 +44,7 @@ export default function Folder({ navigation, route }) {
                     <Image source={edit} style={styles.editImage} />
                 </TouchableWithoutFeedback>
             </View>
-            <Text style={styles.text}>{JSON.stringify(searchResults)}</Text>
+            <VideoPreview />
         </View>
     );
 }
@@ -55,9 +56,6 @@ const styles = StyleSheet.create({
         justifyContent: ' center',
         height: '100%',
         width: '100%',
-    },
-    text: {
-        color: '#ffffff'
     },
     editImage: {
         width: 40,

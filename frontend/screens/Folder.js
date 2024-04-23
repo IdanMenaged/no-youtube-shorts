@@ -1,4 +1,4 @@
-import { StyleSheet, View, TouchableWithoutFeedback, Image } from 'react-native';
+import { StyleSheet, View, TouchableWithoutFeedback, Image, Text } from 'react-native';
 import { useState, useEffect } from 'react'
 import { getFolder } from '../util/local-storage';
 import cache from '../util/cache';
@@ -20,6 +20,7 @@ export default function Folder({ navigation, route }) {
                 console.log('in cache')
                 setSearchResults(inCache)
             } else {
+                console.log('searching...')
                 const results = []
                 data.channels.forEach(async channel => {
                     let result = await search(channel)
@@ -44,7 +45,7 @@ export default function Folder({ navigation, route }) {
                     <Image source={edit} style={styles.editImage} />
                 </TouchableWithoutFeedback>
             </View>
-            <VideoPreview />
+            {searchResults ? <VideoPreview searchResult={searchResults[0][0]} /> : <Text style={styles.text}>no videos</Text>}
         </View>
     );
 }
@@ -65,4 +66,7 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-end',
         marginRight: '5%'
     },
+    text: {
+        color: '#ffffff'
+    }
 });

@@ -29,7 +29,7 @@ export default function Folder({ navigation, route }) {
                         })
                     })
                     setSearchResults(results)
-                    // cache.set(route.params.id, results)
+                    cache.set(route.params.id, results)
                 })
             }
         })

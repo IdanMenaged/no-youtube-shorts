@@ -1,4 +1,4 @@
-import { StyleSheet, View, TouchableWithoutFeedback, Image, Text } from 'react-native';
+import { StyleSheet, View, TouchableWithoutFeedback, Image, Text, ScrollView } from 'react-native';
 import { useState, useEffect } from 'react'
 import { getFolder } from '../util/local-storage';
 import cache from '../util/cache';
@@ -42,7 +42,7 @@ export default function Folder({ navigation, route }) {
     }, [])
 
     return (
-        <View style={styles.container}>
+        <ScrollView contentContainerStyle={styles.container} bounces={false}>
             <Navbar />
             <View style={styles.editContainer}>
                 <TouchableWithoutFeedback
@@ -55,7 +55,7 @@ export default function Folder({ navigation, route }) {
                 searchResult={result}
                 key={result.id.videoId}
             />) : <Text style={styles.text}>no videos</Text>}
-        </View>
+        </ScrollView>
     );
 }
 
@@ -64,8 +64,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#000000',
         alignItems: 'center',
         justifyContent: ' center',
-        height: '100%',
-        width: '100%',
     },
     editImage: {
         width: 40,

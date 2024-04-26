@@ -54,7 +54,7 @@ export default function Folder({ navigation, route }) {
                     <Image source={edit} style={styles.editImage} />
                 </TouchableWithoutFeedback>
             </View>
-            {searchResults ? searchResults.map(result => <VideoPreview
+            {searchResults.length !== 0 ? searchResults.map(result => <VideoPreview
                 searchResult={result}
                 key={result.id.videoId}
             />) : <Text style={styles.text}>no videos</Text>}
@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#000000',
         alignItems: 'center',
         justifyContent: ' center',
+        flexGrow: 1
     },
     editImage: {
         width: 40,

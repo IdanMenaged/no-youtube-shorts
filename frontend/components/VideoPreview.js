@@ -1,13 +1,10 @@
 import { StyleSheet, View, Text, Image } from "react-native";
 
 export default function VideoPreview({ searchResult }) {
-    console.log(searchResult.snippet.thumbnails.default.url)
-
     return (
-        <View>
+        <View style={styles.container}>
             <Image
                 source={{ uri: searchResult.snippet.thumbnails.default.url }}
-                // source={require('../assets/icon.png')}
                 style={styles.icon}
             />
             <Text style={styles.text}>{searchResult.snippet.title}</Text>
@@ -20,9 +17,11 @@ const styles = StyleSheet.create({
         color: '#ffffff'
     },
     icon: {
-        // width: 10000,
-        // height: 10000,
-        // resizeMode: 'contain',
-        backgroundColor: '#ffffff'
+        width: 200,
+        height: 200,
+    },
+    container: {
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 })

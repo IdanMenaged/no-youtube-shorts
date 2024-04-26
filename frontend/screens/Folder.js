@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { getFolder } from '../util/local-storage';
 import cache from '../util/cache';
 import { search } from '../util/youtube';
+import { shuffleArray } from '../util/general'
 import Navbar from '../components/Navbar';
 import VideoPreview from '../components/VideoPreview';
 
@@ -27,6 +28,9 @@ export default function Folder({ navigation, route }) {
                             results.push(vid)
                         })
                     })
+
+                    shuffleArray(results) // otherwise they appear in the order channels were given
+
                     setSearchResults(results)
                     cache.set(route.params.id, results)
                 })

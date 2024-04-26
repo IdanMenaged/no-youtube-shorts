@@ -9,28 +9,27 @@ import VideoPreview from '../components/VideoPreview';
 const edit = require('../assets/edit.png')
 
 export default function Folder({ navigation, route }) {
-    const [data, setData] = useState(null)
     const [searchResults, setSearchResults] = useState(null)
 
     const onLoad = () => {
         getFolder(route.params.id).then(async (data) => {
-            setData(data)
             const inCache = await cache.get(route.params.id)
             if (inCache) {
                 console.log('in cache')
                 setSearchResults(inCache)
             } else {
                 console.log('searching...')
-                const results = []
-                data.channels.forEach(async channel => {
-                    let result = await search(channel)
-                    result = result.items
-                    result.forEach(vid => results.push(vid))
-                    results.push(result)
-                    setSearchResults(results) // FIX: prob triggers multiple renders. for now its fast enough and isn't too much of a problem
-                    if (!results.error) {
-                        cache.set(route.params.id, results)
-                    }
+
+                const searchPromises = data.channels.map(channel => search(channel))
+                Promise.all(searchPromises).then(_searchResults => {
+                    const results = []
+                    _searchResults.forEach(result => {
+                        result.items.forEach(vid => {
+                            results.push(vid)
+                        })
+                    })
+                    setSearchResults(results)
+                    // cache.set(route.params.id, results)
                 })
             }
         })

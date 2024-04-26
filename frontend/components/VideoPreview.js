@@ -31,13 +31,12 @@ export default function VideoPreview({ searchResult }) {
                 style={styles.icon}
             /> */}
             <YoutubePlayer
-                height={300}
+                height={200}
+                width={300}
                 play={playing}
-                videoId='cTQrl-1KE7U'
+                videoId={searchResult.id.videoId}
                 onChangeState={onStateChange}
             />
-            <Button title={playing ? 'pause' : 'play'} onPress={togglePlaying} />
-            <Text style={styles.text}>{decodeTitle(searchResult.snippet.title)}</Text>
         </View>
     )
 }

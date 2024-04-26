@@ -9,11 +9,6 @@ export default function VideoPreview({ searchResult }) {
             .replace(/&amp;/g, '&');
     }
 
-    if (!searchResult) {
-        console.log(searchResult)
-        return;
-    }
-
     return (
         <View style={styles.container}>
             <Image

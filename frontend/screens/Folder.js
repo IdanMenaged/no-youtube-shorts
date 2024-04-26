@@ -15,7 +15,6 @@ export default function Folder({ navigation, route }) {
         getFolder(route.params.id).then(async (data) => {
             const inCache = await cache.get(route.params.id)
             if (inCache) {
-                console.log('in cache')
                 setSearchResults(inCache)
             } else {
                 console.log('searching...')

@@ -51,7 +51,10 @@ export default function Folder({ navigation, route }) {
                     <Image source={edit} style={styles.editImage} />
                 </TouchableWithoutFeedback>
             </View>
-            {searchResults ? searchResults.map(result => <VideoPreview searchResult={result} />) : <Text style={styles.text}>no videos</Text>}
+            {searchResults ? searchResults.map(result => <VideoPreview
+                searchResult={result}
+                key={result.id.videoId}
+            />) : <Text style={styles.text}>no videos</Text>}
         </View>
     );
 }

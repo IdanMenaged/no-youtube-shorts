@@ -10,7 +10,7 @@ import VideoPreview from '../components/VideoPreview';
 const edit = require('../assets/edit.png')
 
 export default function Folder({ navigation, route }) {
-    const [searchResults, setSearchResults] = useState(null)
+    const [searchResults, setSearchResults] = useState([])
 
     const onLoad = () => {
         getFolder(route.params.id).then(async (data) => {

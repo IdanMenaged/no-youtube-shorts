@@ -4,12 +4,19 @@
 2. [functionality that might not be obvious](#functionality-that-might-not-be-obvious)
 3. [notes](#notes)
 
-## how to run
+## how to run development server
+to run the app locally, run
 ```
-cd frontend
 yarn expo start
 ```
-this will create a QR code that can be used by the expo mobile app to view the app
+this will create a QR code that will let you open the app inside of expo go.
+you must be on the same network as your computer
+
+## publishing
+to publish a new update to production, run
+```
+eas update
+```
 
 ## functionality that might not be obvious
 - in the gallery, long press the icon to change it

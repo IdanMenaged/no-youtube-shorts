@@ -1,9 +1,4 @@
 # no-youtube-shorts
-## table of contents
-1. [how to run](#how-to-run)
-2. [functionality that might not be obvious](#functionality-that-might-not-be-obvious)
-3. [notes](#notes)
-
 ## how to run development server
 to run the app locally, run
 ```

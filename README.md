@@ -17,6 +17,12 @@ to publish a new update to production, run
 ```
 eas update
 ```
+a new link should than be created. click the `Website link` field in the previous command's output.
+click `Preview`
+update the link in this file with the new link provided
+
+## where to access the app?
+the alpha can be reached through [this link](https://expo.dev/preview/update?message=0.0.1&updateRuntimeVersion=1.0.0&createdAt=2024-04-27T14%3A47%3A43.253Z&slug=exp&projectId=6ba9eb44-b0f9-4568-aa77-741350d2a82f&group=35a23dbc-ddca-41a1-94a8-a6947ae967f5)
 
 ## functionality that might not be obvious
 - in the gallery, long press the icon to change it

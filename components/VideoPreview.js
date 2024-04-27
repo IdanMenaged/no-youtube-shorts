@@ -15,8 +15,8 @@ export default function VideoPreview({ searchResult }) {
     return (
         <View style={styles.container}>
             <YoutubePlayer
-                height={200}
-                width={300}
+                height={250}
+                width={400}
                 play={playing}
                 videoId={searchResult.id.videoId}
                 onChangeState={onStateChange}

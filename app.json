@@ -42,16 +42,16 @@
         "expo-image-picker"
       ]
     ],
-    "extra": {
-      "eas": {
-        "projectId": "9a6a97f2-450c-4e03-b163-cc0e0ccf5cb2"
-      }
-    },
     "runtimeVersion": {
       "policy": "appVersion"
     },
     "updates": {
-      "url": "https://u.expo.dev/9a6a97f2-450c-4e03-b163-cc0e0ccf5cb2"
+      "url": "https://u.expo.dev/6ba9eb44-b0f9-4568-aa77-741350d2a82f"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "6ba9eb44-b0f9-4568-aa77-741350d2a82f"
+      }
     }
   }
 }

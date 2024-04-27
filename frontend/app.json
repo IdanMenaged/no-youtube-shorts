@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "frontend",
-    "slug": "frontend",
+    "name": "no-youtube-shorts",
+    "slug": "no-youtube-shorts",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,7 +21,10 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -30,12 +33,25 @@
       [
         "expo-font",
         {
-          "fonts": ["./assets/fonts/UbuntuCondensed-Regular.ttf"]
+          "fonts": [
+            "./assets/fonts/UbuntuCondensed-Regular.ttf"
+          ]
         }
       ],
       [
         "expo-image-picker"
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "9a6a97f2-450c-4e03-b163-cc0e0ccf5cb2"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/9a6a97f2-450c-4e03-b163-cc0e0ccf5cb2"
+    }
   }
 }

@@ -1,0 +1,25 @@
+{
+  "cli": {
+    "version": ">= 7.8.5"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "channel": "development"
+    },
+    "preview": {
+      "distribution": "internal",
+      "channel": "preview",
+      "env": {
+        "YOUTUBE_DATA_API_KEY": "AIzaSyAbO41wgrBk1rlykvCaHM3WbuKb5F2y9to"
+      }
+    },
+    "production": {
+      "channel": "production"
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}

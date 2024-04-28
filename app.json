@@ -24,7 +24,8 @@
       },
       "permissions": [
         "android.permission.RECORD_AUDIO"
-      ]
+      ],
+      "package": "com.idanmenaged.noyoutubeshorts"
     },
     "web": {
       "favicon": "./assets/favicon.png"

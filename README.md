@@ -2,7 +2,7 @@
 ## installation
 ### ios
 1. install [expo go](https://apps.apple.com/us/app/expo-go/id982107779)
-2. open [this link](https://expo.dev/preview/update?message=widened%20video%20previews&updateRuntimeVersion=1.0.0&createdAt=2024-04-27T15%3A14%3A48.646Z&slug=exp&projectId=6ba9eb44-b0f9-4568-aa77-741350d2a82f&group=943ae812-913a-47de-99ff-8bb3b6a0cee2) on a computer <a id="app-link"></a>
+2. open [this link](https://expo.dev/preview/update?message=widened%20video%20previews&updateRuntimeVersion=1.0.0&createdAt=2024-04-27T15%3A14%3A48.646Z&slug=exp&projectId=6ba9eb44-b0f9-4568-aa77-741350d2a82f&group=943ae812-913a-47de-99ff-8bb3b6a0cee2) on a computer
 3. scan the QR code on your phone (this will launch expo go)
 congratulations, you now have the app. however, you must open it from expo go. [here](#open-the-app-after-installation) is a detailed explanation of how that works
 

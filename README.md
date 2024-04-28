@@ -14,6 +14,19 @@ congratulations, you now have the app. however, you must open it from expo go. [
 3. click `Branch: master`
 4. click `Open`
 
+### android
+#### android >=8.0
+1. navigate to the Install unknown apps system settings screen
+2. enable app installations from the location from which you're installing (i.e. your web browser)
+3. open [this link](https://expo.dev//accounts/idanmenaged/projects/no-youtube-shorts/builds/93d67465-ffd9-453b-b7ac-91d9c596274b) on your computer
+4. scan the QR code
+
+#### android <=7.1.1
+1. navigate to Settings > Security
+2. enable `Unknown sources`
+3. open [this link](https://expo.dev//accounts/idanmenaged/projects/no-youtube-shorts/builds/93d67465-ffd9-453b-b7ac-91d9c596274b) on your computer
+4. scan the QR code
+
 ## contrib
 ### how to run development server
 to run the app locally, run
@@ -23,17 +36,20 @@ yarn expo start
 this will create a QR code that will let you open the app inside of expo go.
 you must be on the same network as your computer
 
-## publishing
-> [!NOTE]
-> this action can only be performed by an admin
+## admin actions
+### publishing
 to publish a new update to production, run
 ```
 eas update
 ```
-then:
-1. open the generated link
-2. click `Preview`
-3. replace [this link](#app-link)
+then update the links on this page
+
+### building
+run
+```
+eas build --profile preview
+```
+then update the links on this page
 
 ## functionality that might not be obvious
 - in the gallery, long press the icon to change it

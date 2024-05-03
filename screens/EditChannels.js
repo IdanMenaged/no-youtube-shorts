@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
         fontSize: 25,
         fontFamily: 'Ubuntu',
         width: '55%',
-        height: '25%',
+        height: 125,
         marginTop: '10%'
     }
 });

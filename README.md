@@ -56,5 +56,3 @@ then update the links on this page
 
 ## notes
 - each folder has a list of channels. they're called 'channels' throughout the project since i originally planned to use youtube ids. this was changed to use a generic search meaning a channel can also be a keyword or anything else you would put in the youtube search bar
-
-USELESS LINE FOR TEST
